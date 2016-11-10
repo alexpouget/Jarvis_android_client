@@ -11,10 +11,12 @@
     tools:context="com.example.alex.jarvis.MainActivity">
 
     <Button
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10px"
+        android:background="@drawable/my_button"
+        android:layout_marginTop="10dp"
         android:text="active"
-        android:id="@+id/button" />
+        android:id="@+id/button"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

@@ -26,19 +26,21 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         button = (Button)findViewById(R.id.button);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
-
-                intent.putExtra(RecognizerIntent.EXTRA_CALLING_PACKAGE,getClass().getPackage().getName());
-                intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
-                startActivityForResult(intent,REQUEST_CODE);
-            }
-        });
+        button.setOnClickListener(speak);
 
         checkVoiceRecognition();
     }
+
+    View.OnClickListener speak = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+
+            intent.putExtra(RecognizerIntent.EXTRA_CALLING_PACKAGE,getClass().getPackage().getName());
+            intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+            startActivityForResult(intent,REQUEST_CODE);
+        }
+    };
 
     private void checkVoiceRecognition() {
         PackageManager packageManager = getPackageManager();
@@ -47,9 +49,6 @@ public class MainActivity extends AppCompatActivity {
         if(activities.size() == 0){
             button.setEnabled(false);
             Toast.makeText(this,"recognizer not available",Toast.LENGTH_LONG).show();
-        }
-        else {
-            Toast.makeText(this,"recognizer are available",Toast.LENGTH_LONG).show();
         }
     }
 
@@ -62,9 +61,15 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(this,"string empty",Toast.LENGTH_LONG).show();
                 }
                 Toast.makeText(this,arrayList.get(0),Toast.LENGTH_LONG).show();
-                if(arrayList.get(0).equalsIgnoreCase("allume la lumiere")) {
-                    //call api
+                switch (arrayList.get(0)){
+                    case "allume la lumiere":
+                        break;
+                    case "eteinds la lumiere":
+                        break;
+                    default:
+                        break;
                 }
+
             }
         }else{
             Toast.makeText(this,resultCode,Toast.LENGTH_LONG).show();
