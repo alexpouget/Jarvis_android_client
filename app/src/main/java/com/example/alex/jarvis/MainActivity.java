@@ -18,7 +18,7 @@ import java.util.StringTokenizer;
 public class MainActivity extends AppCompatActivity {
 
     private Button button;
-
+    private Command command;
     private static final int REQUEST_CODE = 1001;
 
     @Override
@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         button = (Button)findViewById(R.id.button);
         button.setOnClickListener(speak);
-
+        command = new Command();
         checkVoiceRecognition();
     }
 
@@ -61,15 +61,7 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(this,"string empty",Toast.LENGTH_LONG).show();
                 }
                 Toast.makeText(this,arrayList.get(0),Toast.LENGTH_LONG).show();
-                switch (arrayList.get(0)){
-                    case "allume la lumiere":
-                        break;
-                    case "eteinds la lumiere":
-                        break;
-                    default:
-                        break;
-                }
-
+                command.doCommand(arrayList.get(0));
             }
         }else{
             Toast.makeText(this,resultCode,Toast.LENGTH_LONG).show();
