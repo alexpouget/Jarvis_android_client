@@ -18,7 +18,8 @@ import java.util.StringTokenizer;
 public class MainActivity extends AppCompatActivity {
 
     private Button button;
-    private Command command;
+    //private Command command;
+    private Sender sender;
     private static final int REQUEST_CODE = 1001;
 
     @Override
@@ -27,7 +28,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         button = (Button)findViewById(R.id.button);
         button.setOnClickListener(speak);
-        command = new Command();
+        //command = new Command();
+        String ip = "192.0.0.0";
+        sender = new Sender(3434,ip);
         checkVoiceRecognition();
     }
 
@@ -61,7 +64,8 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(this,"string empty",Toast.LENGTH_LONG).show();
                 }
                 Toast.makeText(this,arrayList.get(0),Toast.LENGTH_LONG).show();
-                command.doCommand(arrayList.get(0));
+                Command command = new Command(arrayList.get(0));
+                sender.sendCommand(command);
             }
         }else{
             Toast.makeText(this,resultCode,Toast.LENGTH_LONG).show();
