@@ -19,4 +19,40 @@
         android:id="@+id/button"
         android:layout_centerHorizontal="true" />
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/my_rectangle"
+        android:layout_marginTop="10dp"
+        android:text="Switch On Bedroom"
+        android:layout_below="@+id/button"
+        android:id="@+id/OnBedRoom" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/my_rectangle"
+        android:layout_marginTop="10dp"
+        android:text="Switch Off Bedroom"
+        android:layout_below="@+id/OnBedRoom"
+        android:id="@+id/OffBedRoom" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/my_rectangle"
+        android:layout_marginTop="10dp"
+        android:text="Switch On LivingRoom"
+        android:layout_below="@+id/OffBedRoom"
+        android:id="@+id/OnLivingRoom"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/my_rectangle"
+        android:layout_marginTop="10dp"
+        android:text="Switch Off LivingRoom"
+        android:layout_below="@+id/OnLivingRoom"
+        android:id="@+id/OffLivingRoom" />
+
 </RelativeLayout>

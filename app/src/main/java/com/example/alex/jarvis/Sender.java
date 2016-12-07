@@ -11,10 +11,11 @@ import java.net.Socket;
  * Created by alex on 04/12/2016.
  */
 
-public class Sender {
+public class Sender extends Thread{
 
     private int port;
     private String ip;
+    private Command command;
 
     public Sender(int port,String ip) {
         this.port = port;
@@ -22,6 +23,13 @@ public class Sender {
     }
 
     public void sendCommand(Command command) {
+        this.command = command;
+        this.start();
+    }
+
+    @Override
+    public void run() {
+        super.run();
         try {
 
             //Open socket
